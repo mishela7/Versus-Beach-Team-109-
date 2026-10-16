@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Versus Beach Bar - Кошничка</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            background: #ffffff;
+            color: #0b0b0b;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 60px 10%;
+        }
+
+        .back-btn {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 40px;
+            transition: color .3s;
+        }
+
+        .back-btn:hover { color: #0b0b0b; }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .menu-header h1 {
+            font-size: 3rem;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0 0 10px;
+        }
+
+        .menu-header p {
+            color: #666;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .pella-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-box {
+            background: #d9edef;
+            padding: 35px;
+            border-radius: 4px;
+            border-top: 3px solid #d4af37;
+            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+        }
+
+        .box-title {
+            font-size: 1.6rem;
+            color: #0b0b0b;
+            margin: 0 0 30px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0,0,0,.12);
+        }
+
+        .order-item:last-child { border-bottom: 0; }
+
+        .item-info { flex: 1; }
+
+        .item-name {
+            color: #0b0b0b;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .item-price {
+            color: #d4af37;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+        .quantity {
+            width: 70px;
+            padding: 9px;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            background: #fff;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .summary { grid-column: 1 / -1; }
+
+        .customer-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .customer-form label {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            font-weight: 600;
+        }
+
+        .customer-form .full { grid-column: 1 / -1; }
+
+        .customer-form input,
+        .customer-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            font: inherit;
+            background: #fff;
+        }
+
+        .customer-form textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .total {
+            text-align: right;
+            margin: 25px 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .total span { color: #d4af37; }
+
+        .order-btn {
+            display: block;
+            margin-left: auto;
+            border: 0;
+            background: #d4af37;
+            color: #fff;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .order-btn:hover { background: #b89524; }
+
+        #orderMessage {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-left: 4px solid #d4af37;
+            line-height: 1.6;
+        }
+        .item-info small {
+            display: block;
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+        @media (max-width: 900px) {
+            body { padding: 40px 5%; }
+
+            .pella-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .summary { grid-column: auto; }
+
+            .customer-form { grid-template-columns: 1fr; }
+
+            .customer-form .full { grid-column: auto; }
+
+            .menu-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="index.html#menu" class="back-btn">← НАЗАД ДО МЕНИ</a>
+
+<div class="menu-header">
+    <h1>🛒 Кошничка</h1>
+    <p>Изберете јадења, кафе и пијалаци од менито и направете ја вашата нарачка</p>
+</div>
+
+<div class="pella-grid">
+    <!-- ПРЕДЈАДЕЊА И САЛАТИ -->
+    <div class="menu-box">
+        <h2 class="box-title">Предјадења & Салати</h2>
+
+        <div class="order-item"><div class="item-info"><div class="item-name">Даска со млечно сирење</div><div class="item-price">600 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Даска со млечно сирење" data-price="600"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Овчо сирење</div><div class="item-price">240 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Овчо сирење" data-price="240"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Тврдо сирење</div><div class="item-price">240 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Тврдо сирење" data-price="240"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Брускета помодоро</div><div class="item-price">180 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Брускета помодоро" data-price="180"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Версус</div><div class="item-price">460 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Версус" data-price="460"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Цезар</div><div class="item-price">380 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Цезар" data-price="380"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Авокадо</div><div class="item-price">460 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Авокадо" data-price="460"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Капрезе</div><div class="item-price">280 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Капрезе" data-price="280"></div>
+    </div>
+    <!-- ГЛАВНИ ЈАДЕЊА -->
+    <div class="menu-box">
+        <h2 class="box-title">Главни Јадења</h2>
+
+        <div class="order-item"><div class="item-info"><div class="item-name">Стек „Версус“ (1kg.)</div><div class="item-price">4600 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Стек „Версус“ (1kg.)" data-price="4600"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Пилешки стек во бел сос</div><div class="item-price">420 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Пилешки стек во бел сос" data-price="420"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Рибај стек со коска</div><div class="item-price">1600 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Рибај стек со коска" data-price="1600"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Њујоркски стрип стек</div><div class="item-price">1050 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Њујоркски стрип стек" data-price="1050"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Tomahawk steak (1kg.)</div><div class="item-price">3200 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Tomahawk steak (1kg.)" data-price="3200"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">T-bone (1kg.)</div><div class="item-price">3950 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="T-bone (1kg.)" data-price="3950"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Уштипци во кајмак</div><div class="item-price">460 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Уштипци во кајмак" data-price="460"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Плескавица со кашкавал</div><div class="item-price">460 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Плескавица со кашкавал" data-price="460"></div>
+    </div>
+    <!-- РИБА И МОРСКИ -->
+    <div class="menu-box">
+        <h2 class="box-title">Риба & Морски специјалитети</h2>
+
+        <div class="order-item"><div class="item-info"><div class="item-name">Лосос</div><div class="item-price">900 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Лосос" data-price="900"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Лаврак</div><div class="item-price">800 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Лаврак" data-price="800"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Пастрмка на скара</div><div class="item-price">3000 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Пастрмка на скара" data-price="3000"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Орада</div><div class="item-price">800 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Орада" data-price="800"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Школки</div><div class="item-price">600 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Школки" data-price="600"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Шкампи аглио олио</div><div class="item-price">900 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Шкампи аглио олио" data-price="900"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Лингвини со морски плодови</div><div class="item-price">600 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Лингвини со морски плодови" data-price="600"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Лингвини со ракчиња</div><div class="item-price">750 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Лингвини со ракчиња" data-price="750"></div>
+    </div>
+
+
+
+    <!-- КАФЕ И ПИЈАЛАЦИ -->
+    <div class="menu-box">
+        <h2 class="box-title">Кафе & Пијалаци</h2>
+
+        <div class="order-item"><div class="item-info"><div class="item-name">Еспресо</div><div class="item-price">80 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Еспресо" data-price="80"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Капучино</div><div class="item-price">120 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Капучино" data-price="120"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Freddo Espresso / Cappuccino</div><div class="item-price">140 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Freddo Espresso / Cappuccino" data-price="140"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Ириско Кафе</div><div class="item-price">190 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Ириско Кафе" data-price="190"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Свежо цеден портокал / Микс</div><div class="item-price">180 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Свежо цеден портокал / Микс" data-price="180"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Кока-Кола / Фанта / Спрајт (0.25л)</div><div class="item-price">140 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Кока-Кола / Фанта / Спрајт (0.25л)" data-price="140"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Леден Чај (Праска / Лимон)</div><div class="item-price">180 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Леден Чај (Праска / Лимон)" data-price="180"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Газирана / Минерална вода (0.25л)</div><div class="item-price">100 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Газирана / Минерална вода (0.25л)" data-price="100"></div>
+    </div>
+    <!-- КОКТЕЛИ -->
+    <div class="menu-box">
+        <h2 class="box-title">Коктели</h2>
+
+        <div class="order-item"><div class="item-info"><div class="item-name">Classic Mojito</div><div class="item-price">360 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Classic Mojito" data-price="360"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Aperol Spritz</div><div class="item-price">260 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Aperol Spritz" data-price="260"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Sex on the Beach</div><div class="item-price">290 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Sex on the Beach" data-price="290"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Versus Paloma</div><div class="item-price">360 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Versus Paloma" data-price="360"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Sole Serale</div><div class="item-price">320 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Sole Serale" data-price="320"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Cindarella</div><div class="item-price">320 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Cindarella" data-price="320"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Virgin Mojito (Безалкохолен)</div><div class="item-price">300 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Virgin Mojito (Безалкохолен)" data-price="300"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Coco Loco</div><div class="item-price">360 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Coco Loco" data-price="360"></div>
+    </div>
+
+    <!-- СЛАТКИ -->
+    <div class="menu-box">
+        <h2 class="box-title">Десерти</h2>
+
+        <div class="order-item"><div class="item-info"><div class="item-name">Чоколадна торта</div><div class="item-price">220 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Чоколадна торта" data-price="220"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Лава кејк</div><div class="item-price">240 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Лава кејк" data-price="240"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Кадаиф</div><div class="item-price">160 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Кадаиф" data-price="160"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Палачинка</div><div class="item-price">200 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Палачинка" data-price="200"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Премиум Скуп Сладолед</div><div class="item-price">200 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Премиум Скуп Сладолед" data-price="200"></div>
+        <div class="order-item"><div class="item-info"><div class="item-name">Свежо сезонско овошје</div><div class="item-price">340 ден</div></div><input class="quantity" type="number" min="0" value="0" data-name="Свежо сезонско овошје" data-price="340"></div>
+    </div>
+
+    <!-- ПИЦИ -->
+    <div class="menu-box">
+        <h2 class="box-title">Италијански Пици</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Маргарита</div>
+                <div class="item-price">360 ден</div>
+                <small>Доматен сос, моцарела, маслиново масло.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Маргарита" data-price="360">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Капричиоза</div>
+                <div class="item-price">400 ден</div>
+                <small>Доматен сос, кашкавал, шунка, свежи шампињони, маслинки.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Капричиоза" data-price="400">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Кватро Формаџи</div>
+                <div class="item-price">460 ден</div>
+                <small>Доматен сос, моцарела, горгонзола, пармезан.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Кватро Формаџи" data-price="460">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Пеперони</div>
+                <div class="item-price">440 ден</div>
+                <small>Доматен сос, кашкавал, кулен.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Пеперони" data-price="440">
+        </div>
+    </div>
+
+
+    <div class="menu-box">
+        <h2 class="box-title">Италијански Пици</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Равена</div>
+                <div class="item-price">440 ден</div>
+                <small>Доматен сос, кашкавал, чадено говедско.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Равена" data-price="440">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Сицилијана</div>
+                <div class="item-price">460 ден</div>
+                <small>Доматен сос, кашкавал, туна.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Сицилијана" data-price="460">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Пршуто</div>
+                <div class="item-price">460 ден</div>
+                <small>Доматен сос, кашкавал, пршута.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Пршуто" data-price="460">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Примавера</div>
+                <div class="item-price">420 ден</div>
+                <small>Доматен сос, кашкавал, рукола, пармезан, чери домати.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Примавера" data-price="420">
+        </div>
+
+        </div>
+
+    <!-- НАРАЧКА -->
+    <div class="menu-box summary">
+        <h2 class="box-title">Податоци за нарачката</h2>
+
+        <div class="customer-form">
+            <label>
+                Име и презиме
+                <input id="customerName" type="text" placeholder="Внесете име и презиме">
+            </label>
+
+            <label>
+                Телефон
+                <input id="customerPhone" type="tel" placeholder="Внесете телефон">
+            </label>
+
+            <label class="full">
+                Дополнителна забелешка
+                <textarea id="customerNote" placeholder="Напишете забелешка за нарачката..."></textarea>
+            </label>
+        </div>
+
+        <div class="total">Вкупно: <span id="total">0 ден</span></div>
+
+        <button class="order-btn" onclick="makeOrder()">НАРАЧАЈ</button>
+
+        <div id="orderMessage"></div>
+    </div>
+
+
+
+
+<script>
+const quantities = document.querySelectorAll('.quantity');
+const totalElement = document.getElementById('total');
+
+quantities.forEach(input => input.addEventListener('input', updateTotal));
+
+function updateTotal() {
+    let total = 0;
+
+    quantities.forEach(input => {
+        const quantity = Math.max(0, parseInt(input.value) || 0);
+        total += quantity * Number(input.dataset.price);
+    });
+
+    totalElement.textContent = total + ' ден';
+}
+
+function makeOrder() {
+    const name = document.getElementById('customerName').value.trim();
+    const phone = document.getElementById('customerPhone').value.trim();
+    const note = document.getElementById('customerNote').value.trim();
+
+    const selectedItems = [];
+    let total = 0;
+
+    quantities.forEach(input => {
+        const quantity = Math.max(0, parseInt(input.value) || 0);
+        const price = Number(input.dataset.price);
+
+        if (quantity > 0) {
+            selectedItems.push(
+                quantity + ' × ' + input.dataset.name + ' — ' + (quantity * price) + ' ден'
+            );
+            total += quantity * price;
+        }
+    });
+
+    const message = document.getElementById('orderMessage');
+
+    if (!name || !phone) {
+        message.style.display = 'block';
+        message.innerHTML = 'Ве молиме внесете <strong>име и телефон</strong>.';
+        return;
+    }
+
+    if (selectedItems.length === 0) {
+        message.style.display = 'block';
+        message.innerHTML = 'Ве молиме изберете барем еден производ.';
+        return;
+    }
+
+    message.style.display = 'block';
+    message.innerHTML =
+        '<strong>Нарачката е подготвена!</strong><br><br>' +
+        selectedItems.join('<br>') +
+        '<br><br><strong>Вкупно: ' + total + ' ден</strong>' +
+        '<br><br>Име: ' + escapeHtml(name) +
+        '<br>Телефон: ' + escapeHtml(phone) +
+        (note ? '<br>Забелешка: ' + escapeHtml(note) : '');
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+</script>
+
+</body>
+</html>

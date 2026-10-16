@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Versus Beach Bar - Кафе и Пијалаци</title>
+
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 60px 10%;
+        }
+
+        .back-btn {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .back-btn:hover {
+            color: #ffffff;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .menu-header h1 {
+            font-size: 3rem;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0 0 10px 0;
+        }
+
+        .menu-header p {
+            color: #0b0b0b;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .pella-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-box {
+            background: #d9edef;
+            padding: 35px;
+            border-radius: 4px;
+            border-top: 3px solid #d4af37;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .box-title {
+            font-size: 1.6rem;
+            color: #0b0b0b;
+            margin-top: 0;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .items-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .items-list li {
+            margin-bottom: 30px;
+        }
+
+        .items-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .item-name {
+            color: #0b0b0b;
+        }
+
+        .item-price {
+            color: #d4af37;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .item-details {
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .pella-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            body {
+                padding: 40px 5%;
+            }
+            .menu-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<a href="index.html#menu" class="back-btn">← НАЗАД ДО МЕНИ</a>
+
+<div class="menu-header">
+    <h1>☕ Кафе & Пијалаци</h1>
+    <p>Утринско свежо кафе и разладени безалкохолни пијалаци</p>
+</div>
+
+<div class="pella-grid">
+
+    <!-- КУТИЈА 1: КАФЕ И ТОПЛИ НАПИТОЦИ -->
+    <div class="menu-box">
+        <h2 class="box-title">Топли напитоци & Кафе</h2>
+        <ul class="items-list">
+            <li>
+                <div class="item-row">
+                    <span class="item-name">Еспресо</span>
+                    <span class="item-price">80 ден</span>
+                </div>
+                <p class="item-details">Премиум 100% Арабика еспресо со богата крема.</p>
+            </li>
+            <li>
+                <div class="item-row">
+                    <span class="item-name">Капучино</span>
+                    <span class="item-price">120 ден</span>
+                </div>
+                <p class="item-details">Еспресо со кремасто изматено топло млеко и пена.</p>
+            </li>
+            <li>
+                <div class="item-row">
+                    <span class="item-name"> Freddo Espresso / Cappuccino</span>
+                    <span class="item-price">140 ден</span>
+                </div>
+                <p class="item-details">Омиленото летно ладно еспресо со кршен мраз.</p>
+            </li>
+            <li>
+                <div class="item-row">
+                    <span class="item-name">Ириско Кафе</span>
+                    <span class="item-price">190 ден</span>
+                </div>
+                <p class="item-details">Топло кафе со ирско виски, кафеав шеќер и дебел слој течна павлака.</p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- КУТИЈА 2: ЛАДНИ ПИЈАЛАЦИ -->
+    <div class="menu-box">
+        <h2 class="box-title">Освежителни Сокови & Вода</h2>
+        <ul class="items-list">
+            <li>
+                <div class="item-row">
+                    <span class="item-name">Свежо цеден портокал / Микс</span>
+                    <span class="item-price">180 ден</span>
+                </div>
+                <p class="item-details">100% природен цеден сок без додадени шеќери.</p>
+            </li>
+            <li>
+                <div class="item-row">
+                    <span class="item-name">Кока-Кола / Фанта / Спрајт (0.25л)</span>
+                    <span class="item-price">140 ден</span>
+                </div>
+                <p class="item-details">Газирани освежителни пијалаци во стаклено шишенце.</p>
+            </li>
+            <li>
+                <div class="item-row">
+                    <span class="item-name">Леден Чај (Праска / Лимон)</span>
+                    <span class="item-price">180 ден</span>
+                </div>
+                <p class="item-details">Ладен и освежителен овошен чај со коцки мраз.</p>
+            </li>
+            <li>
+                <div class="item-row">
+                    <span class="item-name">Газирана / Минерална вода (0.25л)</span>
+                    <span class="item-price">100 ден</span>
+                </div>
+                <p class="item-details">Природна изворска или газирана ладна вода.</p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

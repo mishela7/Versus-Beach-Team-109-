@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Versus Beach Bar - Cart</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            background: #ffffff;
+            color: #0b0b0b;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 60px 10%;
+        }
+
+        .back-btn {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 40px;
+            transition: color .3s;
+        }
+
+        .back-btn:hover {
+            color: #0b0b0b;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .menu-header h1 {
+            font-size: 3rem;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0 0 10px;
+        }
+
+        .menu-header p {
+            color: #666;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .pella-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-box {
+            background: #d9edef;
+            padding: 35px;
+            border-radius: 4px;
+            border-top: 3px solid #d4af37;
+            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+        }
+
+        .box-title {
+            font-size: 1.6rem;
+            color: #0b0b0b;
+            margin: 0 0 30px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0,0,0,.12);
+        }
+
+        .order-item:last-child {
+            border-bottom: 0;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            color: #0b0b0b;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .item-price {
+            color: #d4af37;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .item-info small {
+            display: block;
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .quantity {
+            width: 70px;
+            padding: 9px;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            background: #fff;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .summary {
+            grid-column: 1 / -1;
+        }
+
+        .customer-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .customer-form label {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            font-weight: 600;
+        }
+
+        .customer-form .full {
+            grid-column: 1 / -1;
+        }
+
+        .customer-form input,
+        .customer-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            font: inherit;
+            background: #fff;
+        }
+
+        .customer-form textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .total {
+            text-align: right;
+            margin: 25px 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .total span {
+            color: #d4af37;
+        }
+
+        .order-btn {
+            display: block;
+            margin-left: auto;
+            border: 0;
+            background: #d4af37;
+            color: #fff;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .order-btn:hover {
+            background: #b89524;
+        }
+
+        #orderMessage {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-left: 4px solid #d4af37;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 40px 5%;
+            }
+
+            .pella-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .summary {
+                grid-column: auto;
+            }
+
+            .customer-form {
+                grid-template-columns: 1fr;
+            }
+
+            .customer-form .full {
+                grid-column: auto;
+            }
+
+            .menu-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="en.html#menu" class="back-btn">← BACK TO MENU</a>
+
+<div class="menu-header">
+    <h1>🛒 Cart</h1>
+    <p>Select dishes, coffee and drinks from the menu and place your order</p>
+</div>
+
+<div class="pella-grid">
+
+    <!-- PIZZAS -->
+    <div class="menu-box">
+        <h2 class="box-title">Italian Pizzas</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Margherita</div>
+                <div class="item-price">360 MKD</div>
+                <small>Tomato sauce, mozzarella, olive oil.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Margherita" data-price="360">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Capricciosa</div>
+                <div class="item-price">400 MKD</div>
+                <small>Tomato sauce, cheese, ham, fresh mushrooms, olives.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Capricciosa" data-price="400">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Quattro Formaggi</div>
+                <div class="item-price">460 MKD</div>
+                <small>Tomato sauce, mozzarella, gorgonzola, parmesan.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Quattro Formaggi" data-price="460">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Pepperoni</div>
+                <div class="item-price">440 MKD</div>
+                <small>Tomato sauce, cheese, kulen.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Pepperoni" data-price="440">
+        </div>
+    </div>
+
+
+    <!-- MORE PIZZAS -->
+    <div class="menu-box">
+        <h2 class="box-title">Italian Pizzas</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Ravenna</div>
+                <div class="item-price">440 MKD</div>
+                <small>Tomato sauce, cheese, smoked beef.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Ravenna" data-price="440">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Siciliana</div>
+                <div class="item-price">460 MKD</div>
+                <small>Tomato sauce, cheese, tuna.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Siciliana" data-price="460">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Prosciutto</div>
+                <div class="item-price">460 MKD</div>
+                <small>Tomato sauce, cheese, prosciutto.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Prosciutto" data-price="460">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Primavera</div>
+                <div class="item-price">420 MKD</div>
+                <small>Tomato sauce, cheese, arugula, parmesan, cherry tomatoes.</small>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Primavera" data-price="420">
+        </div>
+    </div>
+
+
+    <!-- STARTERS & SALADS -->
+    <div class="menu-box">
+        <h2 class="box-title">Starters & Salads</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Milk Cheese Platter</div>
+                <div class="item-price">600 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Milk Cheese Platter" data-price="600">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Sheep Cheese</div>
+                <div class="item-price">240 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Sheep Cheese" data-price="240">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Hard Cheese</div>
+                <div class="item-price">240 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Hard Cheese" data-price="240">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Bruschetta Pomodoro</div>
+                <div class="item-price">180 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Bruschetta Pomodoro" data-price="180">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Versus Salad</div>
+                <div class="item-price">460 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Versus Salad" data-price="460">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Caesar Salad</div>
+                <div class="item-price">380 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Caesar Salad" data-price="380">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Avocado Salad</div>
+                <div class="item-price">460 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Avocado Salad" data-price="460">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Caprese</div>
+                <div class="item-price">280 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Caprese" data-price="280">
+        </div>
+    </div>
+
+
+    <!-- MAIN DISHES -->
+    <div class="menu-box">
+        <h2 class="box-title">Main Dishes</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Versus Steak (1kg)</div>
+                <div class="item-price">4600 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Versus Steak (1kg)" data-price="4600">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Chicken Steak in White Sauce</div>
+                <div class="item-price">420 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Chicken Steak in White Sauce" data-price="420">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Bone-in Ribeye Steak</div>
+                <div class="item-price">1600 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Bone-in Ribeye Steak" data-price="1600">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">New York Strip Steak</div>
+                <div class="item-price">1050 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="New York Strip Steak" data-price="1050">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Tomahawk Steak (1kg)</div>
+                <div class="item-price">3200 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Tomahawk Steak (1kg)" data-price="3200">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">T-Bone Steak (1kg)</div>
+                <div class="item-price">3950 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="T-Bone Steak (1kg)" data-price="3950">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Kajmak Meatballs</div>
+                <div class="item-price">460 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Kajmak Meatballs" data-price="460">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Cheeseburger Steak</div>
+                <div class="item-price">460 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Cheeseburger Steak" data-price="460">
+        </div>
+    </div>
+
+
+    <!-- FISH & SEAFOOD -->
+    <div class="menu-box">
+        <h2 class="box-title">Fish & Seafood</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Salmon</div>
+                <div class="item-price">900 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Salmon" data-price="900">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Sea Bass</div>
+                <div class="item-price">800 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Sea Bass" data-price="800">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Grilled Trout</div>
+                <div class="item-price">3000 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Grilled Trout" data-price="3000">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Sea Bream</div>
+                <div class="item-price">800 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Sea Bream" data-price="800">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Mussels</div>
+                <div class="item-price">600 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Mussels" data-price="600">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Shrimp Aglio e Olio</div>
+                <div class="item-price">900 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Shrimp Aglio e Olio" data-price="900">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Linguine with Seafood</div>
+                <div class="item-price">600 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Linguine with Seafood" data-price="600">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Linguine with Shrimp</div>
+                <div class="item-price">750 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Linguine with Shrimp" data-price="750">
+        </div>
+    </div>
+
+
+    <!-- COFFEE & DRINKS -->
+    <div class="menu-box">
+        <h2 class="box-title">Coffee & Drinks</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Espresso</div>
+                <div class="item-price">80 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Espresso" data-price="80">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Cappuccino</div>
+                <div class="item-price">120 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Cappuccino" data-price="120">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Freddo Espresso / Cappuccino</div>
+                <div class="item-price">140 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Freddo Espresso / Cappuccino" data-price="140">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Irish Coffee</div>
+                <div class="item-price">190 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Irish Coffee" data-price="190">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Fresh Orange Juice / Mix</div>
+                <div class="item-price">180 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Fresh Orange Juice / Mix" data-price="180">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Coca-Cola / Fanta / Sprite (0.25L)</div>
+                <div class="item-price">140 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Coca-Cola / Fanta / Sprite (0.25L)" data-price="140">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Iced Tea (Peach / Lemon)</div>
+                <div class="item-price">180 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Iced Tea (Peach / Lemon)" data-price="180">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Sparkling / Mineral Water (0.25L)</div>
+                <div class="item-price">100 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Sparkling / Mineral Water (0.25L)" data-price="100">
+        </div>
+    </div>
+
+
+    <!-- COCKTAILS -->
+    <div class="menu-box">
+        <h2 class="box-title">Cocktails</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Classic Mojito</div>
+                <div class="item-price">360 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Classic Mojito" data-price="360">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Aperol Spritz</div>
+                <div class="item-price">260 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Aperol Spritz" data-price="260">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Sex on the Beach</div>
+                <div class="item-price">290 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Sex on the Beach" data-price="290">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Versus Paloma</div>
+                <div class="item-price">360 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Versus Paloma" data-price="360">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Sole Serale</div>
+                <div class="item-price">320 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Sole Serale" data-price="320">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Cinderella</div>
+                <div class="item-price">320 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Cinderella" data-price="320">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Virgin Mojito (Non-Alcoholic)</div>
+                <div class="item-price">300 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Virgin Mojito (Non-Alcoholic)" data-price="300">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Coco Loco</div>
+                <div class="item-price">360 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Coco Loco" data-price="360">
+        </div>
+    </div>
+
+
+    <!-- DESSERTS -->
+    <div class="menu-box">
+        <h2 class="box-title">Desserts</h2>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Chocolate Cake</div>
+                <div class="item-price">220 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Chocolate Cake" data-price="220">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Lava Cake</div>
+                <div class="item-price">240 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Lava Cake" data-price="240">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Kadaif</div>
+                <div class="item-price">160 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Kadaif" data-price="160">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Pancake</div>
+                <div class="item-price">200 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Pancake" data-price="200">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Premium Scoop Ice Cream</div>
+                <div class="item-price">200 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Premium Scoop Ice Cream" data-price="200">
+        </div>
+
+        <div class="order-item">
+            <div class="item-info">
+                <div class="item-name">Fresh Seasonal Fruit</div>
+                <div class="item-price">340 MKD</div>
+            </div>
+            <input class="quantity" type="number" min="0" value="0"
+                   data-name="Fresh Seasonal Fruit" data-price="340">
+        </div>
+    </div>
+
+
+    <!-- ORDER DETAILS -->
+    <div class="menu-box summary">
+        <h2 class="box-title">Order Details</h2>
+
+        <div class="customer-form">
+
+            <label>
+                Full Name
+                <input id="customerName"
+                       type="text"
+                       placeholder="Enter your full name">
+            </label>
+
+            <label>
+                Phone
+                <input id="customerPhone"
+                       type="tel"
+                       placeholder="Enter your phone number">
+            </label>
+
+            <label class="full">
+                Additional Note
+                <textarea id="customerNote"
+                          placeholder="Write a note about your order..."></textarea>
+            </label>
+
+        </div>
+
+        <div class="total">
+            Total: <span id="total">0 MKD</span>
+        </div>
+
+        <button class="order-btn" onclick="makeOrder()">
+            PLACE ORDER
+        </button>
+
+        <div id="orderMessage"></div>
+    </div>
+
+</div>
+
+
+<script>
+
+    const quantities = document.querySelectorAll('.quantity');
+    const totalElement = document.getElementById('total');
+
+    quantities.forEach(input =>
+        input.addEventListener('input', updateTotal)
+    );
+
+    function updateTotal() {
+
+        let total = 0;
+
+        quantities.forEach(input => {
+
+            const quantity =
+                Math.max(0, parseInt(input.value) || 0);
+
+            total +=
+                quantity * Number(input.dataset.price);
+        });
+
+        totalElement.textContent =
+            total + ' MKD';
+    }
+
+
+    function makeOrder() {
+
+        const name =
+            document.getElementById('customerName')
+                .value.trim();
+
+        const phone =
+            document.getElementById('customerPhone')
+                .value.trim();
+
+        const note =
+            document.getElementById('customerNote')
+                .value.trim();
+
+        const selectedItems = [];
+
+        let total = 0;
+
+
+        quantities.forEach(input => {
+
+            const quantity =
+                Math.max(0, parseInt(input.value) || 0);
+
+            const price =
+                Number(input.dataset.price);
+
+            if (quantity > 0) {
+
+                selectedItems.push(
+                    quantity +
+                    ' × ' +
+                    input.dataset.name +
+                    ' — ' +
+                    (quantity * price) +
+                    ' MKD'
+                );
+
+                total +=
+                    quantity * price;
+            }
+        });
+
+
+        const message =
+            document.getElementById('orderMessage');
+
+
+        if (!name || !phone) {
+
+            message.style.display = 'block';
+
+            message.innerHTML =
+                'Please enter your <strong>full name and phone number</strong>.';
+
+            return;
+        }
+
+
+        if (selectedItems.length === 0) {
+
+            message.style.display = 'block';
+
+            message.innerHTML =
+                'Please select at least one item.';
+
+            return;
+        }
+
+
+        message.style.display = 'block';
+
+        message.innerHTML =
+            '<strong>Your order is ready!</strong><br><br>' +
+            selectedItems.join('<br>') +
+            '<br><br><strong>Total: ' +
+            total +
+            ' MKD</strong>' +
+            '<br><br>Name: ' +
+            escapeHtml(name) +
+            '<br>Phone: ' +
+            escapeHtml(phone) +
+            (note
+                ? '<br>Note: ' +
+                escapeHtml(note)
+                : '');
+    }
+
+
+    function escapeHtml(text) {
+
+        const div =
+            document.createElement('div');
+
+        div.textContent = text;
+
+        return div.innerHTML;
+    }
+
+</script>
+
+</body>
+</html>

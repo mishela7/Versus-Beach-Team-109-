@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Веб презентација - Versus Beach Bar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+  <link rel="stylesheet" href="css.css">
+  <script src="index.js" defer></script>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    <h2>VERSUS BEACH BAR</h2>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#home"></a>Почетна</li>
+      <li><a href="#about">За нас</a></li>
+      <li><a href="#menu">Мени</a></li>
+      <li><a href="#events">Прослави</a></li>
+      <li><a href="#gallery">Галерија</a></li>
+      <li><a href="#contact">Контакт</a></li>
+    </ul>
+  </nav>
+  <div class="language-switcher">
+    <a href="index.html"><img src="https://flagcdn.com/w40/mk.png" alt="MK" class="flag-icon"></a>
+    <a href="en.html"><img src="https://flagcdn.com/w40/gb.png" alt="EN" class="flag-icon"></a>
+  </div>
+  <a href="#reservation" class="button">Резервирај</a>
+
+  <div id="google_translate_element"></div>
+</header>
+
+<!-- Почетна -->
+
+<section id="home">
+
+  <video autoplay muted loop playsinline class="video-bg">
+    <source src="video1.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero">
+    <h1>Добредојдовте во Versus Beach Bar</h1>
+    <p>
+      Уживајте во прекрасниот поглед кон Охридското Езеро,
+      вкусна храна, освежителни пијалаци и незаборавна атмосфера.
+    </p>
+    <a href="#reservation" class="button">
+      Резервирај маса
+    </a>
+  </div>
+
+</section>
+
+<!-- За нас -->
+
+<section id="about">
+
+  <h2>За нас</h2>
+
+  <p>
+    Versus Beach Bar е модерно место покрај брегот на Охридското Езеро
+    во Струга, создадено за сите кои сакаат добра храна, пријатна атмосфера
+    и незаборавни моменти со семејството и пријателите.
+  </p>
+
+  <p>
+    Кај нас можете да уживате во разновидно мени,
+    освежителни коктели, кафе, десерти и специјалитети,
+    додека се релаксирате со прекрасен поглед кон езерото.
+  </p>
+
+  <div class="about-cards">
+
+    <div class="card">
+
+      <i class="fa-solid fa-utensils"></i>
+
+      <h3>Ресторан</h3>
+
+      <p>
+        Богат избор на јадења подготвени од свежи состојки.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <i class="fa-solid fa-martini-glass-citrus"></i>
+
+      <h3>Коктели</h3>
+
+      <p>
+        Освежителни коктели и пијалаци за секој вкус.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <i class="fa-solid fa-water"></i>
+
+      <h3>Плажа</h3>
+
+      <p>
+        Опуштете се на плажа со прекрасен поглед кон езерото.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ================= МЕНИ ================= -->
+<section id="menu">
+
+  <h2>Нашето мени</h2>
+
+  <p>
+    Во нашето мени можете да најдете разновиден избор на вкусни јадења,
+    салати, пици, паста, риба, десерти, освежителни пијалаци,
+    коктели, вина и топли напитоци.
+  </p>
+
+  <div class="menu-container">
+
+    <a href="predjadenja.html" class="menu-card" style="text-decoration: none; color: inherit; display: block;">
+      <i class="fa-solid fa-leaf"></i>
+      <h3>Предјадења & Салати</h3>
+      <p>Свежи салати и вкусни предјадења подготвени со внимателно одбрани состојки.</p>
+    </a>
+
+    <a href="glavni.html" class="menu-card" style="text-decoration: none; color: inherit; display: block;">
+      <i class="fa-solid fa-bowl-food"></i>
+      <h3>Главни јадења</h3>
+      <p>Вкусни специјалитети подготвени со внимание и свежи состојки.</p>
+    </a>
+
+    <a href="riba.html" class="menu-card" style="text-decoration: none; color: inherit; display: block;">
+      <i class="fa-solid fa-fish"></i>
+      <h3>Риба & Морски специјалитети</h3>
+      <p>Свежа риба и морски специјалитети подготвени со внимателно одбрани состојки.</p>
+    </a>
+
+    <a href="pici.html" class="menu-card" style="text-decoration: none; color: inherit; display: block;">
+      <i class="fa-solid fa-pizza-slice"></i>
+      <h3>Пици</h3>
+      <p>Подготвени со свежи состојки и богати вкусови за секој вкус.</p>
+    </a>
+
+
+
+    <!-- КАРТИЧКА ЗА ДЕСЕРТИ: Оди на deserti.html -->
+    <a href="deserti.html" class="menu-card" style="text-decoration: none; color: inherit; display: block;">
+      <i class="fa-solid fa-ice-cream"></i>
+      <h3>Десерти</h3>
+      <p>Слатки задоволства создадени за совршен завршеток на секој оброк.</p>
+    </a>
+
+    <!-- КАРТИЧКА ЗА ПИЈАЛОЦИ: Оди на pijaloci.html -->
+    <a href="pijaloci.html" class="menu-card" style="text-decoration: none; color: inherit; display: block;">
+      <i class="fa-solid fa-mug-hot"></i>
+      <h3>Кафе и пијалаци</h3>
+      <p>Од топло кафе до освежителни пијалаци, избор за секој вкус.</p>
+    </a>
+
+    <!-- КАРТИЧКА ЗА КОКТЕЛИ: Оди на kokteli.html -->
+    <a href="kokteli.html" class="menu-card" style="text-decoration: none; color: inherit; display: block;">
+      <i class="fa-solid fa-martini-glass"></i>
+      <h3>Коктели</h3>
+      <p>Освежителни коктели со совршен вкус за секој момент.</p>
+    </a>
+    <a href="kosnicka.html" class="menu-card" style="text-decoration: none; color: inherit; display: block;">
+      <div class="cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+      <h2>КОШНИЧКА</h2>
+      <p>Изберете производи од менито и направете ја вашата нарачка.</p>
+    </a>
+
+
+
+</div>
+
+
+</section>
+<!-- ================= ПРОСЛАВИ ================= -->
+<section id="events">
+
+  <h2>Прослави и настани</h2>
+
+  <p class="section-text">
+    Без разлика дали организирате роденден, Baby Shower,
+    веридба или годишнина, нашиот тим ќе се погрижи вашиот
+    ден да биде исполнет со прекрасни спомени.
+  </p>
+
+  <div class="events-container">
+
+    <div class="event-card">
+      <img src="images/birthday.jpg" alt="Роденден">
+      <div class="event-content">
+        <h3>🎂 Родендени</h3>
+        <p>
+          Прославете го вашиот роденден во прекрасен амбиент
+          покрај езерото со вкусна храна и музика.
+        </p>
+        <a href="#reservation" class="button">
+          Резервирај
+        </a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="images/babyshower.jpg" alt="Baby Shower">
+      <div class="event-content">
+        <h3>👶 Baby Shower</h3>
+        <p>
+          Организирајте незаборавен Baby Shower со декорација,
+          специјално мени и прекрасна атмосфера.
+        </p>
+        <a href="#reservation" class="button">
+          Резервирај
+        </a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="images/engagement.jpg" alt="Веридба">
+      <div class="event-content">
+        <h3>💍 Веридби</h3>
+        <p>
+          Совршено место за романтична веридба
+          со поглед кон Охридското Езеро.
+        </p>
+        <a href="#reservation" class="button">
+          Резервирај
+        </a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="images/anniversary.jpg" alt="Годишнина">
+      <div class="event-content">
+        <h3>🥂 Годишнини</h3>
+        <p>
+          Прославете ја вашата љубов во елегантен
+          и пријатен амбиент.
+        </p>
+        <a href="#reservation" class="button">
+          Резервирај
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<!-- ================= ГАЛЕРИЈА ================= -->
+
+<section id="gallery">
+
+  <h2>Галерија</h2>
+
+  <p>
+    Погледнете дел од атмосферата во Versus Beach Bar.
+  </p>
+  <div class="gallery-wrapper">
+    <button class="gallery-btn gallery-prev">‹</button>
+
+
+
+    <div class="gallery-container">
+
+      <img src="images/kafe.jpg" alt="Кафе во Versus Beach Bar">
+      <img src="images/slika.jpg" alt="Коктел во Versus Beach Bar">
+      <img src="images/lebed.jpg" alt="Лебед">
+      <img src="images/koktel2.jpg" alt="Коктел">
+      <img src="images/koktel.jpg" alt="Коктел во Versus Beach Bar">
+      <img src="images/aglio olio.jpg" alt="Aglio Olio">
+      <img src="images/palacinka.jpg" alt="Палачинка">
+      <img src="images/rizoto2.jpg" alt="Рижото">
+      <img src="images/slika1.jpg" alt="Дел од Versus Beach Bar">
+      <img src="images/slika2.jpg" alt="Вечерен амбиент во Versus Beach Bar">
+      <img src="images/slika3.jpg" alt="Дел од Versus Beach Bar">
+      <img src="images/slika4.jpg" alt="Кафе во Versus Beach Bar">
+      <img src="images/slika5.jpg" alt="Дел од Versus Beach Bar">
+      <img src="images/slika6.jpg" alt="Салата">
+      <img src="images/slika7.jpg">
+      <img src="images/slika8.jpg">
+      <img src="images/pica.jpg">
+      <img src="images/pica2.jpg">
+
+    </div>
+
+    <button class="gallery-btn gallery-next">›</button>
+
+
+
+  </div>
+
+
+</section>
+<!-- ================= РЕЗЕРВАЦИЈА ================= -->
+
+<section id="reservation">
+
+  <div class="reservation-container">
+
+    <div class="reservation-text">
+
+      <h2>Резервирајте маса или прослава</h2>
+
+      <p>
+        Пополнете ја формата и нашиот тим ќе ве контактира
+        во најкраток можен рок за потврда на вашата резервација.
+      </p>
+
+      <h3>Работно време</h3>
+
+      <p>Понеделник - Недела</p>
+
+      <p>09:00 - 01:00</p>
+
+      <h3>Контакт</h3>
+
+      <p><i class="fa-solid fa-phone"></i> +389 70 123 456</p>
+
+      <p><i class="fa-solid fa-envelope"></i> info@versus.mk</p>
+
+    </div>
+
+    <div class="reservation-form">
+
+      <form>
+
+        <input type="text" placeholder="Име и презиме" required>
+
+        <input type="tel" placeholder="Телефон" required>
+
+        <input type="email" placeholder="Е-пошта">
+
+        <select required>
+
+          <option selected disabled>Изберете тип на резервација</option>
+
+          <option>Резервација на маса</option>
+
+          <option>Роденден</option>
+
+          <option>Baby Shower</option>
+
+          <option>Веридба</option>
+
+          <option>Годишнина</option>
+
+        </select>
+
+        <input type="date" required>
+
+        <input type="time" required>
+
+        <input type="number"
+               placeholder="Број на гости"
+               min="1"
+               max="100">
+
+        <textarea
+                rows="5"
+                placeholder="Дополнителни барања (декорација, торта, музика...)">
+                </textarea>
+
+        <button type="submit">
+          Испрати барање
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= КОНТАКТ ================= -->
+
+<section id="contact">
+
+  <div class="contact-header">
+    <h2>Контактирај нè</h2>
+
+    <p>
+      Доколку имате прашања или сакате да направите резервација,
+      контактирајте нè.
+    </p>
+  </div>
+
+
+  <div class="contact-main">
+
+    <!-- CONTACT FORM -->
+    <div class="contact-form">
+
+      <div class="form-row">
+
+        <input type="email" placeholder="Е-пошта">
+
+        <input type="tel" placeholder="Телефон">
+
+      </div>
+
+      <input type="text" placeholder="Наслов">
+
+      <textarea placeholder="Порака"></textarea>
+
+      <button type="submit">Испрати порака</button>
+
+    </div>
+
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter">
+
+      <h3>Нашиот Newsletter</h3>
+
+      <p>
+        Бидете во тек со новостите, настаните и понудите
+        на Versus Beach Bar.
+      </p>
+
+      <input type="email" placeholder="Е-пошта">
+
+      <button type="submit">Пријави се</button>
+
+    </div>
+
+  </div>
+
+
+  <!-- CONTACT CARDS -->
+
+  <div class="contact-cards">
+
+    <div class="contact-card">
+
+      <i class="fa-solid fa-phone"></i>
+
+      <div>
+        <h3>+389 70 123 456</h3>
+
+        <p>
+          Јавете ни се за информации и резервации.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="contact-card">
+
+      <i class="fa-solid fa-envelope"></i>
+
+      <div>
+        <h3>info@versus.mk</h3>
+
+        <p>
+          Пишете ни доколку имате дополнителни прашања.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="contact-card">
+
+      <i class="fa-solid fa-location-dot"></i>
+
+      <div>
+        <h3>Струга, Охридско Езеро</h3>
+
+        <p>
+          Посетете нè и уживајте покрај езерото.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- MAP -->
+
+  <div class="contact-map">
+
+    <iframe
+            src="https://www.google.com/maps?q=Versus%20Beach%20Bar%20Struga&output=embed"
+            width="100%"
+            height="350"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+    </iframe>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="footer-container">
+
+    <div class="footer-about">
+
+      <h3>Versus Beach Bar</h3>
+
+      <p>
+        Уживајте во прекрасната атмосфера покрај езерото,
+        вкусна храна и незаборавни моменти со вашите најблиски.
+      </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <h3>Брзи линкови</h3>
+
+      <ul>
+
+        <li><a href="#home">Почетна</a></li>
+        <li><a href="#about">За нас</a></li>
+        <li><a href="#menu">Мени</a></li>
+        <li><a href="#events">Прослави</a></li>
+        <li><a href="#reservation">Резервација</a></li>
+        <li><a href="#contact">Контакт</a></li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="footer-social">
+
+      <h3>Следете нè</h3>
+
+      <a href="#">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+
+      <a href="#">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+      <a href="#">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <hr>
+
+  <p class="copyright">
+    © 2026 Веб презентација изработена за потребите на проектна задача.
+  </p>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versus Beach Bar - Coffee & Drinks</title>
+
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #ffffff;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 60px 10%;
+    }
+
+    .back-btn {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      display: inline-block;
+      margin-bottom: 40px;
+    }
+
+    .back-btn:hover {
+      color: #ffffff;
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .menu-header h1 {
+      font-size: 3rem;
+      color: #d4af37;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin: 0 0 10px 0;
+    }
+
+    .menu-header p {
+      color: #0b0b0b;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .pella-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-box {
+      background: #d9edef;
+      padding: 35px;
+      border-radius: 4px;
+      border-top: 3px solid #d4af37;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    }
+
+    .box-title {
+      font-size: 1.6rem;
+      color: #0b0b0b;
+      margin-top: 0;
+      margin-bottom: 30px;
+      border-bottom: 1px dashed #333;
+      padding-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .items-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .items-list li {
+      margin-bottom: 30px;
+    }
+
+    .items-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .item-name {
+      color: #0b0b0b;
+    }
+
+    .item-price {
+      color: #d4af37;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .item-details {
+      color: #999;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .pella-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      body {
+        padding: 40px 5%;
+      }
+      .menu-header h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<a href="en.html#menu" class="back-btn">← BACK TO MENU</a>
+
+<div class="menu-header">
+  <h1>☕ Coffee & Drinks</h1>
+  <p>Fresh morning coffee and refreshing non-alcoholic drinks</p>
+</div>
+
+<div class="pella-grid">
+
+  <!-- BOX 1: COFFEE & HOT DRINKS -->
+  <div class="menu-box">
+    <h2 class="box-title">Hot Drinks & Coffee</h2>
+    <ul class="items-list">
+      <li>
+        <div class="item-row">
+          <span class="item-name">Espresso</span>
+          <span class="item-price">80 den</span>
+        </div>
+        <p class="item-details">Premium 100% Arabica espresso with a rich crema.</p>
+      </li>
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Cappuccino</span>
+          <span class="item-price">120 den</span>
+        </div>
+        <p class="item-details">Espresso with creamy steamed milk and a smooth foam.</p>
+      </li>
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Freddo Espresso / Cappuccino</span>
+          <span class="item-price">140 den</span>
+        </div>
+        <p class="item-details">A refreshing iced espresso served with crushed ice.</p>
+      </li>
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Irish Coffee</span>
+          <span class="item-price">190 den</span>
+        </div>
+        <p class="item-details">Hot coffee with Irish whiskey, brown sugar and a rich layer of cream.</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- BOX 2: COLD DRINKS -->
+  <div class="menu-box">
+    <h2 class="box-title">Refreshing Juices & Water</h2>
+    <ul class="items-list">
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Fresh Orange Juice / Mix</span>
+          <span class="item-price">180 den</span>
+        </div>
+        <p class="item-details">100% natural freshly squeezed juice with no added sugar.</p>
+      </li>
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Coca-Cola / Fanta / Sprite (0.25L)</span>
+          <span class="item-price">140 den</span>
+        </div>
+        <p class="item-details">Refreshing carbonated drinks served in a glass bottle.</p>
+      </li>
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Iced Tea (Peach / Lemon)</span>
+          <span class="item-price">180 den</span>
+        </div>
+        <p class="item-details">Cold and refreshing fruit tea served with ice cubes.</p>
+      </li>
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Sparkling / Mineral Water (0.25L)</span>
+          <span class="item-price">100 den</span>
+        </div>
+        <p class="item-details">Natural spring or refreshing sparkling water.</p>
+      </li>
+
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

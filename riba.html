@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versus Beach Bar - Пици и Пасти</title>
+
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #ffffff;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 60px 10%;
+    }
+
+    /* Копче за назад */
+    .back-btn {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      display: inline-block;
+      margin-bottom: 40px;
+    }
+
+    .back-btn:hover {
+      color: #ffffff;
+    }
+
+    /* Наслов на менито */
+    .menu-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .menu-header h1 {
+      font-size: 3rem;
+      color: #d4af37; /* Златна боја */
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin: 0 0 10px 0;
+    }
+
+    .menu-header p {
+      color: #0b0b0b;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    /* Распоред на категориите (Пици лево, Пасти десно) */
+    .pella-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-box {
+      background: #d9edef;
+      padding: 35px;
+      border-radius: 4px;
+      border-top: 3px solid #d4af37; /* Препознатливата линија од Пела */
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    }
+
+    .box-title {
+      font-size: 1.6rem;
+      color: #0b0b0b;
+      margin-top: 0;
+      margin-bottom: 30px;
+      border-bottom: 1px dashed #333;
+      padding-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .items-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .items-list li {
+      margin-bottom: 30px;
+    }
+
+    .items-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Име на јадењето и цена во иста линија */
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .item-name {
+      color: #0b0b0b;
+    }
+
+    .item-price {
+      color: #d4af37;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Опис на јадењето со состојки */
+    .item-details {
+      color: #999;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Прилагодување за мобилни телефони */
+    @media (max-width: 900px) {
+      .pella-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      body {
+        padding: 40px 5%;
+      }
+      .menu-header h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+<a href="index.html#menu" class="back-btn">← НАЗАД ДО МЕНИ</a>
+
+<div class="menu-header">
+  <h1>🐟 Риба & Морски специјалитети</h1>
+  <p>Свежи езерски и морски специјалитети со автентичен медитерански вкус</p>
+</div>
+
+<div class="pella-grid">
+  <div class="menu-box">
+    <h2 class="box-title">Риба</h2>
+    <ul class="items-list">
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Лосос</span>
+          <span class="item-price">900 ден</span>
+        </div>
+      </li>
+      <li>
+        <div class="item-row">
+          <span class="item-name">Лаврак</span>
+          <span class="item-price">800 ден</span>
+        </div>
+      </li>
+      <li>
+        <div class="item-row">
+          <span class="item-name">Пастрмка на скара</span>
+          <span class="item-price">3000 ден</span>
+        </div>
+      </li>
+      <li>
+        <div class="item-row">
+          <span class="item-name">Орада</span>
+          <span class="item-price">800 ден</span>
+        </div>
+
+
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="menu-box">
+    <h2 class="box-title">Морски специјалитети</h2>
+    <ul class="items-list">
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Школки</span>
+          <span class="item-price">600 ден</span>
+        </div>
+      </li>
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Шкампи аглио олио</span>
+          <span class="item-price">900 ден</span>
+        </div>
+
+      </li>
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Лингвини со морски плодови</span>
+          <span class="item-price">600 ден</span>
+        </div>
+      </li>
+
+      <li>
+        <div class="item-row">
+          <span class="item-name">Лингвини со ракчиња</span>
+          <span class="item-price">750 ден</span>
+        </div>
+
+      </li>
+
+    </ul>
+  </div>
+
+
+
+</div>
+
+</body>
+</html>

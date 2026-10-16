@@ -1,0 +1,31 @@
+{
+  "name": "koshnicka",
+  "version": "1.0.0",
+  "description": "Веб презентација - Versus Beach Bar со QR код за нарачки",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 8080",
+    "dev": "live-server --port=8080"
+  },
+  "keywords": [
+    "versus",
+    "beach-bar",
+    "restaurant",
+    "qr-code",
+    "order",
+    "shopping-cart"
+  ],
+  "author": "Versus Beach Bar",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "qrcodejs": "^1.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  }
+}
+
+
